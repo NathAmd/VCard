@@ -2,9 +2,19 @@
 
 document.addEventListener('mousemove', function (e) {
     var xPos = e.pageX;
+    var yPos = e.pageY;
     var VCard = document.getElementsByClassName('VCard');
+
     for (let i = 0; i < VCard.length; i++) {
         var Xcalc = (VCard[i].offsetWidth - xPos) / 50;
-        VCard[i].style.transform = `rotateY(${Xcalc}deg)`;
+        var Ycalc = (VCard[i].offsetHeight - yPos) / 50;
+
+        var Xgradient = 50 + (Xcalc * 1.25);
+        var Ygradient = 300 + (Ycalc * 2.5);
+
+        VCard[i].style.transform =`perspective(1000px)` + `rotateY(${-Xcalc}deg)` + `rotateX(${Ycalc}deg)`;
+        if (VCard[i].id === "face") {
+            VCard[i].style.background = `linear-gradient(${Ygradient}deg, #67C6E360 0%, #67C6E360 ${Xgradient - 12.5}%, #DFF5FF60 ${Xgradient + 12.5}%, #DFF5FF60 100%)`;
+        }
     }
 });
