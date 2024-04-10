@@ -12,9 +12,11 @@ document.addEventListener('mousemove', function (e) {
         var Xgradient = 50 + (Xcalc * 1.25);
         var Ygradient = 300 + (Ycalc * 2.5);
 
+        var Opacity = 40;
+
         VCard[i].style.transform =`perspective(1000px)` + `rotateY(${-Xcalc}deg)` + `rotateX(${Ycalc}deg)`;
         if (VCard[i].id === "face") {
-            VCard[i].style.background = `linear-gradient(${Ygradient}deg, #67C6E360 0%, #67C6E360 ${Xgradient - 12.5}%, #DFF5FF60 ${Xgradient + 12.5}%, #DFF5FF60 100%)`;
+            VCard[i].style.background = `linear-gradient(${Ygradient}deg, #67C6E3${Opacity} 0%, #67C6E3${Opacity} ${Xgradient - 12.5}%, #DFF5FF${Opacity} ${Xgradient + 12.5}%, #DFF5FF${Opacity} 100%)`;
         }
     }
 });
